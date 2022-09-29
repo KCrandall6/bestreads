@@ -3,7 +3,6 @@ import BestSellers from "../components/BestSellers";
 import SelectedBooks from "../components/SelectedBooks";
 
 const Home = () => {
-
   const [myReadingList, setMyReadingList] = useState([]);
 
   const addToReadList = (newBook) => {
@@ -12,13 +11,19 @@ const Home = () => {
     }
   }
 
-  console.log('myReading List', myReadingList)
+  const deleteFromList = (readBook) => {
+    setMyReadingList(myReadingList.filter((prev) => prev !== readBook))
+  }
+
 
   return (
     <div>
       <h1>Bestreads</h1>
       <BestSellers addToReadList={addToReadList}/>
-      <SelectedBooks myReadingList={myReadingList}/>
+      <SelectedBooks 
+      myReadingList={myReadingList}
+      deleteFromList={deleteFromList}
+      />
     </div>
   )
 }
